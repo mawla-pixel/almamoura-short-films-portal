@@ -1,12 +1,12 @@
-export type FilmCategory = 'animation';
+export type FilmCategory = 'short_film';
 
 export interface ScoreRubric {
-  visualDesign: number;
+  visualCinematography: number;
   storytelling: number;
-  animationCraft: number;
+  directionPerformance: number;
+  editing: number;
   soundDesign: number;
-  originality: number;
-  recommendation: 'grand_prize' | 'best_animation' | 'best_visual_design' | 'best_character_animation' | 'best_soundtrack' | 'official_selection' | 'unscored';
+  recommendation: 'grand_prize' | 'best_director' | 'best_screenplay' | 'best_cinematography' | 'best_editing' | 'official_selection' | 'unscored';
   writtenCritique: string;
   verdictDate?: string;
   isCompleted: boolean;

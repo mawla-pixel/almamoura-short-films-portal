@@ -33,7 +33,7 @@ export const AlMamouraLogo: React.FC<AlMamouraLogoProps> = ({
       />
       {showJuryLabel && (
         <span className="text-[10px] tracking-widest text-[#9E7A2A] font-semibold border border-[#9E7A2A]/40 px-1.5 py-0.5 rounded font-mono bg-[#9E7A2A]/5">
-          ANIMATION JURY
+          SHORT FILM JURY
         </span>
       )}
     </div>

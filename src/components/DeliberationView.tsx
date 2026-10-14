@@ -14,7 +14,7 @@ export const DeliberationView: React.FC = () => {
     const avg = getAverageScore(film.id);
     const myScore = scores[currentJudge.id]?.[film.id];
     const totalMy = myScore 
-      ? myScore.visualDesign + myScore.storytelling + myScore.animationCraft + myScore.soundDesign + myScore.originality
+      ? myScore.visualCinematography + myScore.storytelling + myScore.directionPerformance + myScore.editing + myScore.soundDesign
       : 0;
 
     return {
@@ -63,7 +63,7 @@ export const DeliberationView: React.FC = () => {
           <p className="text-xs text-stone-500 mt-1">
             {isAr
               ? 'ترتيب أفلام الرسوم المتحركة وفق تقييمات لجنة تحكيم مهرجان المعمورة.'
-              : 'Animation film standings based on jury evaluations.'}
+              : 'Short film standings based on jury evaluations.'}
           </p>
         </div>
 

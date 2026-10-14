@@ -29,11 +29,11 @@ interface FestivalContextType {
 }
 
 const DEFAULT_RUBRIC: ScoreRubric = {
-  visualDesign: 8,
+  visualCinematography: 8,
   storytelling: 8,
-  animationCraft: 8,
+  directionPerformance: 8,
+  editing: 8,
   soundDesign: 7,
-  originality: 8,
   recommendation: 'official_selection',
   writtenCritique: '',
   isCompleted: false,
@@ -45,7 +45,7 @@ export const FestivalProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   // Films state (strictly sourced from Bunny Stream)
   const [films, setFilms] = useState<FilmSubmission[]>(() => {
     try {
-      const saved = localStorage.getItem('almamoura_animation_films');
+      const saved = localStorage.getItem('almamoura_short_films');
       if (saved) {
         const parsed = JSON.parse(saved);
         if (Array.isArray(parsed) && parsed.length > 0) return parsed;
@@ -69,7 +69,7 @@ export const FestivalProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   // Scores state: judgeId -> filmId -> rubric
   const [scores, setScores] = useState<Record<string, Record<string, ScoreRubric>>>(() => {
     try {
-      const saved = localStorage.getItem('almamoura_animation_scores');
+      const saved = localStorage.getItem('almamoura_short_film_scores');
       if (saved) return JSON.parse(saved);
     } catch {}
     return {};
@@ -78,12 +78,12 @@ export const FestivalProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   // Save state to localStorage
   useEffect(() => {
     if (films.length > 0) {
-      localStorage.setItem('almamoura_animation_films', JSON.stringify(films));
+      localStorage.setItem('almamoura_short_films', JSON.stringify(films));
     }
   }, [films]);
 
   useEffect(() => {
-    localStorage.setItem('almamoura_animation_scores', JSON.stringify(scores));
+    localStorage.setItem('almamoura_short_film_scores', JSON.stringify(scores));
   }, [scores]);
 
   // Function to load live films from Bunny Stream
@@ -149,7 +149,7 @@ export const FestivalProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     Object.values(scores).forEach((judgeDict) => {
       const s = judgeDict[filmId];
       if (s && s.isCompleted) {
-        const sum = s.visualDesign + s.storytelling + s.animationCraft + s.soundDesign + s.originality;
+        const sum = s.visualCinematography + s.storytelling + s.directionPerformance + s.editing + s.soundDesign;
         total += sum;
         count += 1;
       }
@@ -162,10 +162,10 @@ export const FestivalProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   };
 
   const resetAllData = () => {
-    localStorage.removeItem('almamoura_animation_films');
-    localStorage.removeItem('almamoura_animation_scores');
-    localStorage.removeItem('almamoura_animation_notes');
-    localStorage.removeItem('almamoura_animation_bunny_settings');
+    localStorage.removeItem('almamoura_short_films');
+    localStorage.removeItem('almamoura_short_film_scores');
+    localStorage.removeItem('almamoura_short_film_notes');
+    localStorage.removeItem('almamoura_short_film_bunny_settings');
     setFilms([]);
     setScores({});
     refetchBunnyFilms();

@@ -75,7 +75,7 @@ export const Header: React.FC = () => {
               J
             </div>
             <span className="font-medium">
-              <span className="hidden sm:inline">{isAr ? 'لجنة تحكيم الرسوم المتحركة' : 'Animation Jury'}</span>
+              <span className="hidden sm:inline">{isAr ? 'لجنة تحكيم الأفلام القصيرة' : 'Short Film Jury'}</span>
               <span className="sm:hidden">{isAr ? 'لجنة التحكيم' : 'Jury'}</span>
             </span>
           </div>

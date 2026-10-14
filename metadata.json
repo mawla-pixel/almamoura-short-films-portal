@@ -1,6 +1,6 @@
 {
-  "name": "Al Mamoura Film Festival - Animation Jury Portal",
-  "description": "Official screening and adjudication portal for the Al Mamoura Film Festival animation competition, featuring Bunny Stream video playback and jury evaluations.",
+  "name": "Al Mamoura Film Festival - Short Film Jury Portal",
+  "description": "Official screening and adjudication portal for the Al Mamoura Film Festival short film competition, featuring Bunny Stream video playback and jury evaluations.",
   "requestFramePermissions": [],
   "majorCapabilities": []
 }

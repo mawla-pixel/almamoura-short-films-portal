@@ -17,11 +17,11 @@ export const FilmCard: React.FC<FilmCardProps> = ({ film, onSelect }) => {
   const categoryLabel = CATEGORY_LABELS[film.category]?.[language] || film.category;
 
   const totalPoints = myScore
-    ? myScore.visualDesign +
+    ? myScore.visualCinematography +
       myScore.storytelling +
-    myScore.animationCraft +
-      myScore.soundDesign +
-    myScore.originality
+    myScore.directionPerformance +
+    myScore.editing +
+    myScore.soundDesign
     : null;
 
   return (

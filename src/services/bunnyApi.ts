@@ -80,17 +80,17 @@ export const fetchBunnyLibraryVideos = async (): Promise<{ total: number; films:
 
     return {
       id: `bunny-${item.guid}`,
-      title: title || `Untitled Animation Film #${idx + 1}`,
-      titleAr: title || `فيلم رسوم متحركة بلا عنوان #${idx + 1}`,
+      title: title || `Untitled Short Film #${idx + 1}`,
+      titleAr: title || `فيلم قصير بلا عنوان #${idx + 1}`,
       director: director || 'Not provided',
       country: 'Not provided',
       countryCode: '',
-      category: 'animation',
+      category: 'short_film',
       runtimeMinutes,
       runtimeFormatted,
       aspectRatio,
-      synopsis: 'Official animation competition entry hosted on Bunny Stream.',
-      synopsisAr: 'مشاركة رسمية في مسابقة الرسوم المتحركة، مستضافة عبر Bunny Stream.',
+      synopsis: 'Official short film competition entry hosted on Bunny Stream.',
+      synopsisAr: 'مشاركة رسمية في مسابقة الأفلام القصيرة، مستضافة عبر Bunny Stream.',
       posterBgGradient: gradients[idx % gradients.length],
       accentColor: '#C9A84C',
       bunnyStream: {

@@ -44,11 +44,11 @@ export const ScreeningView: React.FC = () => {
   // Simple Scorecard State
   const existingScore = getJudgeScore(currentJudge.id, activeFilm.id);
 
-  const [visualDesign, setVisualDesign] = useState(existingScore?.visualDesign ?? 8);
+  const [visualCinematography, setVisualCinematography] = useState(existingScore?.visualCinematography ?? 8);
   const [storytelling, setStorytelling] = useState(existingScore?.storytelling ?? 8);
-  const [animationCraft, setAnimationCraft] = useState(existingScore?.animationCraft ?? 8);
+  const [directionPerformance, setDirectionPerformance] = useState(existingScore?.directionPerformance ?? 8);
+  const [editing, setEditing] = useState(existingScore?.editing ?? 8);
   const [soundDesign, setSoundDesign] = useState(existingScore?.soundDesign ?? 7);
-  const [originality, setOriginality] = useState(existingScore?.originality ?? 8);
   const [recommendation, setRecommendation] = useState<ScoreRubric['recommendation']>(
     existingScore?.recommendation ?? 'official_selection'
   );
@@ -58,34 +58,34 @@ export const ScreeningView: React.FC = () => {
   useEffect(() => {
     const s = getJudgeScore(currentJudge.id, activeFilm.id);
     if (s) {
-      setVisualDesign(s.visualDesign);
+      setVisualCinematography(s.visualCinematography);
       setStorytelling(s.storytelling);
-      setAnimationCraft(s.animationCraft);
+      setDirectionPerformance(s.directionPerformance);
+      setEditing(s.editing);
       setSoundDesign(s.soundDesign);
-      setOriginality(s.originality);
       setRecommendation(s.recommendation);
       setWrittenCritique(s.writtenCritique);
     } else {
-      setVisualDesign(8);
+      setVisualCinematography(8);
       setStorytelling(8);
-      setAnimationCraft(8);
+      setDirectionPerformance(8);
+      setEditing(8);
       setSoundDesign(7);
-      setOriginality(8);
       setRecommendation('official_selection');
       setWrittenCritique('');
     }
     setSavedSuccess(false);
   }, [activeFilm.id, currentJudge.id, getJudgeScore]);
 
-  const totalScore = visualDesign + storytelling + animationCraft + soundDesign + originality;
+  const totalScore = visualCinematography + storytelling + directionPerformance + editing + soundDesign;
 
   const handleSave = () => {
     saveScore(activeFilm.id, {
-      visualDesign,
+      visualCinematography,
       storytelling,
-      animationCraft,
+      directionPerformance,
+      editing,
       soundDesign,
-      originality,
       recommendation,
       writtenCritique,
       isCompleted: true,
@@ -180,11 +180,11 @@ export const ScreeningView: React.FC = () => {
           {/* 5 Clean Sliders */}
           <div className="space-y-3">
             {[
-              { label: isAr ? 'التصميم البصري والأسلوب الفني' : 'Visual Design & Art Direction', val: visualDesign, set: setVisualDesign },
-              { label: isAr ? 'السرد والإيقاع' : 'Storytelling & Pacing', val: storytelling, set: setStorytelling },
-              { label: isAr ? 'تقنيات التحريك وحركة الشخصيات' : 'Animation Craft & Character Movement', val: animationCraft, set: setAnimationCraft },
+              { label: isAr ? 'التصوير السينمائي والتكوين البصري' : 'Cinematography & Visual Composition', val: visualCinematography, set: setVisualCinematography },
+              { label: isAr ? 'السيناريو والسرد والإيقاع' : 'Screenplay, Story & Pacing', val: storytelling, set: setStorytelling },
+              { label: isAr ? 'الإخراج والأداء' : 'Direction & Performances', val: directionPerformance, set: setDirectionPerformance },
+              { label: isAr ? 'المونتاج والبناء' : 'Editing & Structure', val: editing, set: setEditing },
               { label: isAr ? 'التصميم الصوتي والموسيقى' : 'Sound Design & Music', val: soundDesign, set: setSoundDesign },
-              { label: isAr ? 'الأصالة والأثر الإبداعي' : 'Originality & Creative Impact', val: originality, set: setOriginality },
             ].map((item, idx) => (
               <div key={idx} className="bg-stone-50 p-3 rounded-xl border border-stone-200/80">
                 <div className="flex items-center justify-between text-xs mb-1">
@@ -215,10 +215,10 @@ export const ScreeningView: React.FC = () => {
             >
               <option value="official_selection">Official Selection</option>
               <option value="grand_prize">🏆 Grand Jury Prize Nominee</option>
-              <option value="best_animation">🎞️ Best Animation</option>
-              <option value="best_visual_design">🎨 Best Visual Design</option>
-              <option value="best_character_animation">✨ Best Character Animation</option>
-              <option value="best_soundtrack">🎼 Best Soundtrack</option>
+              <option value="best_director">🎬 Best Director</option>
+              <option value="best_screenplay">✍️ Best Screenplay</option>
+              <option value="best_cinematography">📷 Best Cinematography</option>
+              <option value="best_editing">✂️ Best Editing</option>
             </select>
           </div>
 
