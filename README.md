@@ -16,6 +16,8 @@ Copy `.env.example` to `.env` for local development, then set:
 
 The API key is used only by the server-side `/api/bunny/videos` endpoint and is not included in the browser bundle. For deployment, add these variables in your hosting provider's environment/secrets settings. Deploy the app as a Node.js web service that runs `npm start`, not as a static `dist` directory, because the server provides the Bunny API endpoint.
 
+The endpoint follows Bunny Stream pagination and returns every video in the configured library or collection. It fetches pages in small concurrent batches, so collections larger than Bunny's 100-item page size are supported.
+
 ## Run locally
 
 Prerequisite: Node.js.
